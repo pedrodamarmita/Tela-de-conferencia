@@ -111,6 +111,15 @@
     <label>Número do WhatsApp</label>
     <input type="text" id="whatsapp" placeholder="(DDD) 9XXXX-XXXX" />
 
+    <label>Estado Civil</label>
+    <select id="estadoCivil" style="width:100%; padding:12px; margin-top:6px; border-radius:6px; border:1px solid #bcccdc; font-size:14px;">
+      <option value="">Selecione</option>
+      <option value="Solteiro(a)">Solteiro(a)</option>
+      <option value="Casado(a)">Casado(a)</option>
+      <option value="Divorciado(a)">Divorciado(a)</option>
+      <option value="União Estável">União Estável</option>
+    </select>
+
     <div class="captcha">
       <input type="checkbox" id="autorizacao" />
       <label for="autorizacao">
@@ -132,10 +141,11 @@
       const nome = document.getElementById('nome').value;
       const cpf = document.getElementById('cpf').value;
       const whatsappCliente = document.getElementById('whatsapp').value;
+      const estadoCivil = document.getElementById('estadoCivil').value;
       const autorizacao = document.getElementById('autorizacao').checked;
 
-      if (!nome || !cpf || !whatsappCliente) {
-        alert('Preencha o nome, CPF e WhatsApp.');
+      if (!nome || !cpf || !whatsappCliente || !estadoCivil) {
+        alert('Preencha nome, CPF, WhatsApp e estado civil.');
         return;
       }
 
@@ -145,7 +155,7 @@
       }
 
       const mensagem = `Olá, meu nome é ${nome}.\nCPF: ${cpf}.
-WhatsApp para contato: ${whatsappCliente}.\nAutorizo a consulta do meu CPF para conferência de benefício RMC.`;
+WhatsApp para contato: ${whatsappCliente}.\nEstado civil: ${estadoCivil}.\nAutorizo a consulta do meu CPF para conferência de benefício RMC.`;
 
       const url = `https://wa.me/5547991959797?text=${encodeURIComponent(mensagem)}`;
       window.open(url, '_blank');
