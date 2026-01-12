@@ -95,7 +95,7 @@
       <li>✔ Atendimento humano pelo WhatsApp</li>
     </ul>
 
-    <form action="#" method="post">
+    <form onsubmit="return redirectToWhatsApp();">
       <label for="nome">Nome completo</label>
       <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required>
 
@@ -117,5 +117,24 @@
     </div>
   </div>
 
+  <script>
+    function redirectToWhatsApp() {
+      const nome = document.getElementById('nome').value;
+      const whatsapp = document.getElementById('whatsapp').value;
+      const optin = document.getElementById('optin').checked;
+
+      if (!optin) {
+        alert('Você precisa autorizar o contato para continuar.');
+        return false;
+      }
+
+      const numeroDestino = '5547991959797'; // Ex: 5547999999999
+      const mensagem = `Olá, tudo bem?%0A%0AVocê solicitou uma análise gratuita do seu benefício através do nosso site.%0A%0APosso te ajudar agora?`;
+
+      const url = `https://wa.me/${numeroDestino}?text=${mensagem}`;
+      window.location.href = url;
+      return false;
+    }
+  </script>
 </body>
 </html>
