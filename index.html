@@ -1,139 +1,154 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Análise Gratuita do Benefício</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Conferência de Benefício RMC</title>
   <style>
     body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: #f5f7fa;
-      margin: 0;
-      padding: 0;
-      color: #333;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: linear-gradient(135deg, #0b1c2d, #102a43);
+      padding: 30px;
+      color: #102a43;
     }
     .container {
-      max-width: 500px;
-      margin: 40px auto;
+      max-width: 520px;
+      margin: auto;
       background: #ffffff;
-      border-radius: 10px;
       padding: 30px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      border-top: 6px solid #0d3b66;
     }
     h1 {
+      text-align: center;
+      margin-bottom: 15px;
+      color: #0d3b66;
       font-size: 24px;
-      text-align: center;
-      margin-bottom: 10px;
     }
-    h2 {
-      font-size: 16px;
-      text-align: center;
-      font-weight: normal;
-      color: #555;
-      margin-bottom: 25px;
-    }
-    ul {
-      padding-left: 20px;
+    p {
+      font-size: 14px;
+      color: #334e68;
+      line-height: 1.6;
       margin-bottom: 20px;
-    }
-    ul li {
-      margin-bottom: 8px;
+      text-align: justify;
     }
     label {
-      font-size: 14px;
+      font-weight: 600;
       display: block;
-      margin-bottom: 5px;
+      margin-top: 15px;
+      color: #102a43;
+      font-size: 14px;
     }
-    input[type="text"],
-    input[type="tel"] {
+    input {
       width: 100%;
       padding: 12px;
-      margin-bottom: 15px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
+      margin-top: 6px;
+      border-radius: 6px;
+      border: 1px solid #bcccdc;
       font-size: 14px;
     }
-    .checkbox {
+    input:focus {
+      outline: none;
+      border-color: #0d3b66;
+      box-shadow: 0 0 0 2px rgba(13,59,102,0.1);
+    }
+    .captcha {
+      margin-top: 22px;
+      padding: 15px;
+      background: #f0f4f8;
+      border-radius: 8px;
+      border-left: 4px solid #0d3b66;
       font-size: 13px;
-      margin-bottom: 20px;
+      color: #243b53;
     }
-    .checkbox input {
-      margin-right: 5px;
+    .captcha input {
+      width: auto;
+      margin-right: 8px;
     }
-    button {
+    .btn {
       width: 100%;
-      padding: 14px;
-      background: #1db954;
+      padding: 15px;
+      margin-top: 25px;
       border: none;
-      border-radius: 5px;
+      border-radius: 8px;
       font-size: 16px;
-      color: #fff;
       cursor: pointer;
+      transition: all 0.3s ease;
     }
-    button:hover {
-      background: #17a44a;
+    .btn-whatsapp {
+      background: linear-gradient(135deg, #1fa855, #25D366);
+      color: #ffffff;
+      font-weight: 600;
     }
-    .footer {
+    .btn-whatsapp:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.25);
+    }
+    .obs {
       font-size: 12px;
+      color: #486581;
+      margin-top: 15px;
       text-align: center;
-      color: #777;
-      margin-top: 20px;
     }
   </style>
 </head>
 <body>
-
   <div class="container">
-    <h1>⚠️ Desconto no seu benefício?</h1>
-    <h2>Solicite uma <strong>análise gratuita</strong> e receba orientação pelo WhatsApp</h2>
+    <h1>Conferência de Benefício RMC</h1>
 
-    <p>Muitas pessoas identificam descontos mensais e não sabem exatamente a origem. Nossa equipe realiza uma <strong>verificação gratuita</strong> para orientar sobre o que está sendo descontado.</p>
+    <p>
+      Você pode estar sofrendo <strong>descontos indevidos de RMC</strong> em seu benefício do INSS sem perceber.
+      Preencha os dados abaixo para que possamos analisar e orientar corretamente.
+    </p>
 
-    <ul>
-      <li>✔ Análise gratuita do benefício</li>
-      <li>✔ Orientação personalizada</li>
-      <li>✔ Atendimento humano pelo WhatsApp</li>
-    </ul>
+    <label>Nome Completo</label>
+    <input type="text" id="nome" placeholder="Digite seu nome" />
 
-    <form onsubmit="return redirectToWhatsApp();">
-      <label for="nome">Nome completo</label>
-      <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required>
+    <label>CPF</label>
+    <input type="text" id="cpf" placeholder="Digite seu CPF" />
 
-      <label for="cpf">cpf</label>
-      <input type="tel" id="cpf" name="cpf" placeholder="000.000.000-00" required>
+    <label>Número do WhatsApp</label>
+    <input type="text" id="whatsapp" placeholder="(DDD) 9XXXX-XXXX" />
 
-      <div class="checkbox">
-        <input type="checkbox" id="optin" name="optin" required>
-        <label for="optin">
-          Autorizo o contato via WhatsApp e a ultilização do meu cpf para análise gratuita do meu benefício, conforme a política de privacidade.
-        </label>
-      </div>
-
-      <button type="submit">Quero minha análise gratuita</button>
-    </form>
-
-    <div class="footer">
-      <p>Não somos banco • Não vendemos crédito • Atendimento informativo</p>
+    <div class="captcha">
+      <input type="checkbox" id="autorizacao" />
+      <label for="autorizacao">
+        Autorizo expressamente a utilização do meu CPF para consulta e conferência de possível desconto de RMC em meu benefício, nos termos da LGPD.
+      </label>
     </div>
+
+    <button class="btn btn-whatsapp" onclick="enviarWhatsApp()">
+      Falar no WhatsApp
+    </button>
+
+    <p class="obs">
+      Atenção: muitos beneficiários possuem descontos de RMC ativos sem contratação válida. A conferência é gratuita e sem compromisso.
+    </p>
   </div>
 
   <script>
-    function redirectToWhatsApp() {
+    function enviarWhatsApp() {
       const nome = document.getElementById('nome').value;
-      const whatsapp = document.getElementById('whatsapp').value;
-      const optin = document.getElementById('optin').checked;
+      const cpf = document.getElementById('cpf').value;
+      const whatsappCliente = document.getElementById('whatsapp').value;
+      const autorizacao = document.getElementById('autorizacao').checked;
 
-      if (!optin) {
-        alert('Você precisa autorizar o contato para continuar.');
-        return false;
+      if (!nome || !cpf || !whatsappCliente) {
+        alert('Preencha o nome, CPF e WhatsApp.');
+        return;
       }
 
-      const numeroDestino = '5547991959797'; // Ex: 5547999999999
-      const mensagem = `Olá, tudo bem?%0A%0AVocê solicitou uma análise gratuita do seu benefício através do nosso site.%0A%0APosso te ajudar agora?`;
+      if (!autorizacao) {
+        alert('É necessário autorizar o uso do CPF para continuar.');
+        return;
+      }
 
-      const url = `https://wa.me/${5547991959797}?text=${olá sou Aposentado, quero mais informações}`;
-      window.location.href = url;
-      return false;
+      const mensagem = `Olá, meu nome é ${nome}.\nCPF: ${cpf}.
+WhatsApp para contato: ${whatsappCliente}.\nAutorizo a consulta do meu CPF para conferência de benefício RMC.`;
+
+      const url = `https://wa.me/5547991959797?text=${encodeURIComponent(mensagem)}`;
+      window.open(url, '_blank');
     }
   </script>
 </body>
