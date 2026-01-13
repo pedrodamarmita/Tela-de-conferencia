@@ -7,60 +7,68 @@
   <style>
     body {
       font-family: "Segoe UI", Arial, sans-serif;
-      background: linear-gradient(135deg, #0b1c2d, #102a43);
+      background: linear-gradient(135deg, #1f2356, #2a2f7a);
       padding: 30px;
-      color: #102a43;
+      color: #1f2356;
     }
     .container {
-      max-width: 520px;
+      max-width: 540px;
       margin: auto;
       background: #ffffff;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-      border-top: 6px solid #0d3b66;
+      padding: 35px 30px;
+      border-radius: 14px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+      border-top: 6px solid #f37021;
+    }
+    .logo {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .logo img {
+      max-width: 180px;
     }
     h1 {
       text-align: center;
       margin-bottom: 15px;
-      color: #0d3b66;
+      color: #1f2356;
       font-size: 24px;
+      font-weight: 700;
     }
     p {
       font-size: 14px;
-      color: #334e68;
-      line-height: 1.6;
-      margin-bottom: 20px;
+      color: #4a4a68;
+      line-height: 1.7;
+      margin-bottom: 22px;
       text-align: justify;
     }
     label {
       font-weight: 600;
       display: block;
       margin-top: 15px;
-      color: #102a43;
+      color: #1f2356;
       font-size: 14px;
     }
-    input {
+    input, select {
       width: 100%;
       padding: 12px;
       margin-top: 6px;
-      border-radius: 6px;
-      border: 1px solid #bcccdc;
+      border-radius: 8px;
+      border: 1px solid #cfd3e6;
       font-size: 14px;
     }
-    input:focus {
+    input:focus, select:focus {
       outline: none;
-      border-color: #0d3b66;
-      box-shadow: 0 0 0 2px rgba(13,59,102,0.1);
+      border-color: #f37021;
+      box-shadow: 0 0 0 2px rgba(243,112,33,0.15);
     }
     .captcha {
-      margin-top: 22px;
-      padding: 15px;
-      background: #f0f4f8;
-      border-radius: 8px;
-      border-left: 4px solid #0d3b66;
+      margin-top: 25px;
+      padding: 16px;
+      background: #f4f5fb;
+      border-radius: 10px;
+      border-left: 5px solid #f37021;
       font-size: 13px;
-      color: #243b53;
+      color: #2a2f7a;
     }
     .captcha input {
       width: auto;
@@ -68,33 +76,37 @@
     }
     .btn {
       width: 100%;
-      padding: 15px;
-      margin-top: 25px;
+      padding: 16px;
+      margin-top: 28px;
       border: none;
-      border-radius: 8px;
+      border-radius: 10px;
       font-size: 16px;
       cursor: pointer;
       transition: all 0.3s ease;
     }
     .btn-whatsapp {
-      background: linear-gradient(135deg, #1fa855, #25D366);
+      background: linear-gradient(135deg, #f37021, #ff8a3d);
       color: #ffffff;
-      font-weight: 600;
+      font-weight: 700;
+      letter-spacing: 0.5px;
     }
     .btn-whatsapp:hover {
       transform: translateY(-2px);
-      box-shadow: 0 8px 18px rgba(0,0,0,0.25);
+      box-shadow: 0 10px 22px rgba(0,0,0,0.3);
     }
     .obs {
       font-size: 12px;
-      color: #486581;
-      margin-top: 15px;
+      color: #5f5f82;
+      margin-top: 18px;
       text-align: center;
     }
   </style>
 </head>
 <body>
   <div class="container">
+      <div class="logo">
+        <img src="logo-revisa10.png" alt="Revisa10" />
+      </div>
     <h1>Conferência de Benefício RMC</h1>
 
     <p>
@@ -102,17 +114,13 @@
       Preencha os dados abaixo para que possamos analisar e orientar corretamente.
     </p>
 
-    <label>Nome Completo</label>
-    <input type="text" id="nome" placeholder="Digite seu nome" />
+    
 
     <label>CPF</label>
     <input type="text" id="cpf" placeholder="Digite seu CPF" />
 
-    <label>Número do WhatsApp</label>
-    <input type="text" id="whatsapp" placeholder="(DDD) 9XXXX-XXXX" />
-
     <label>Estado Civil</label>
-    <select id="estadoCivil" style="width:100%; padding:12px; margin-top:6px; border-radius:6px; border:1px solid #bcccdc; font-size:14px;">
+    <select id="estadoCivil" style="width:100%; padding:12px; margin-top:6px; border-radius:8px; border:1px solid #cfd3e6; font-size:14px;">
       <option value="">Selecione</option>
       <option value="Solteiro(a)">Solteiro(a)</option>
       <option value="Casado(a)">Casado(a)</option>
@@ -138,14 +146,12 @@
 
   <script>
     function enviarWhatsApp() {
-      const nome = document.getElementById('nome').value;
       const cpf = document.getElementById('cpf').value;
-      const whatsappCliente = document.getElementById('whatsapp').value;
       const estadoCivil = document.getElementById('estadoCivil').value;
       const autorizacao = document.getElementById('autorizacao').checked;
 
-      if (!nome || !cpf || !whatsappCliente || !estadoCivil) {
-        alert('Preencha nome, CPF, WhatsApp e estado civil.');
+      if (!cpf || !estadoCivil) {
+        alert('Preencha o CPF e o estado civil.');
         return;
       }
 
@@ -154,8 +160,7 @@
         return;
       }
 
-      const mensagem = `Olá, meu nome é ${nome}.\nCPF: ${cpf}.
-WhatsApp para contato: ${whatsappCliente}.\nEstado civil: ${estadoCivil}.\nAutorizo a consulta do meu CPF para conferência de benefício RMC.`;
+      const mensagem = `Olá, desejo realizar a conferência de possível desconto de RMC.\nCPF: ${cpf}.\nEstado civil: ${estadoCivil}.\nAutorizo a consulta do meu CPF para conferência de benefício RMC.`;
 
       const url = `https://wa.me/5547991959797?text=${encodeURIComponent(mensagem)}`;
       window.open(url, '_blank');
